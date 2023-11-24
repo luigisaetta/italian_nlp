@@ -39,6 +39,9 @@ Nel [Notebook](./fine_tune_sentiment.ipynb) trovi codice che può essere utilizz
 
 Il codice è basato sulla libreria **transformers** di HuggingFace.
 
+## Dataset utilizzati
+https://huggingface.co/datasets/cardiffnlp/tweet_sentiment_multilingual
+
 ## Max input size
 Il modello pretrained utilizzato (da Neuraly) è basato su un modello bert-base.
 
