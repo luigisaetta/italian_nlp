@@ -43,6 +43,8 @@ Il codice è basato sulla libreria **transformers** di HuggingFace.
 https://huggingface.co/datasets/cardiffnlp/tweet_sentiment_multilingual
 
 ## Max input size
-Il modello pretrained utilizzato (da Neuraly) è basato su un modello bert-base.
+Il modello pretrained inizialmente utilizzato, di 
+[Neuraly](https://huggingface.co/neuraly/bert-base-italian-cased-sentiment) è basato su un modello 
+**bert-base-cased**.
 
 La dimensione massima per l'input dovrebbe essere **512** token.
