@@ -24,7 +24,7 @@ Nel repository si trova una prima versione di un'applicazione che può essere ut
 
 Il codice è basato su Streamlit.
 
-L'applicazione ha una funzionalità di **automatic labelling**: è possibile predefinre le label utilizzando un 
+L'applicazione ha una funzionalità di **automatic labelling**: è possibile predefinire le label utilizzando un 
 modello pre-trained, disponibile su HF Hub.
 
 Ovviamente, le label devono essere verificate ed, eventualmente, corrette.
