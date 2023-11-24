@@ -20,7 +20,8 @@ Le label sono definite in base alla seguente convenzione
 {"negativo": 0, "neutro": 1, "positivo": 2}
 ```
 ## Model training
-Nel Notebook trovi codice che può essere utilizzato per classificare testo in (negativo, neutro, positivo).
+Nel [Notebook](./fine_tune_sentiment.ipynb) trovi codice che può essere utilizzato per classificare testo in 
+(negativo, neutro, positivo).
 
 Il codice è basato sulla libreria **transformers** di HuggingFace.
 
