@@ -1,15 +1,20 @@
 import os
 import pandas as pd
 import streamlit as st
+import re
 from collections import Counter
 
+# il client per utilizzare il modello ML per la definizione delle label
 from sentiment import SentimentAnalyzer
 
 label_list = ["negativo", "neutro", "positivo"]
 
-replacement_mapping = {"negativo": 0, "neutro": 1, "positivi": 2}
+replacement_mapping = {"negativo": 0, "neutro": 1, "positivo": 2}
 
 
+#
+# Functions for text preprocessing
+#
 def remove_comma(text):
     text = text.replace(",", " ")
 
@@ -22,6 +27,17 @@ def remove_newline(text):
     return text
 
 
+def remove_repeated_blanks(text):
+    # Replace two or more spaces with a single space
+    text = re.sub(" +", " ", text)
+
+    return text
+
+
+#
+# This function check if in the list of files there are duplicats
+# files with exactly the same content (as string)
+#
 def has_duplicates(list_texts):
     item_count = Counter(list_texts)
 
@@ -44,8 +60,10 @@ def read_text_files(directory):
         if filename.endswith(".txt"):
             with open(os.path.join(directory, filename), "r", encoding="utf-8") as file:
                 text = file.read().strip()
+                # preprocessing....
                 text = remove_comma(text)
                 text = remove_newline(text)
+                text = remove_repeated_blanks(text)
 
                 messages.append(text)
 
@@ -56,6 +74,9 @@ def read_text_files(directory):
     return messages
 
 
+#
+# Create and display the form
+#
 def display_editable_table(messages, option_autolabel):
     st.header("Labelling dati per Sentiment Analysis")
 
@@ -74,6 +95,7 @@ def display_editable_table(messages, option_autolabel):
     if option_autolabel:
         data = {"text": messages, "label": comp_label_list}
     else:
+        # all to neutral as init
         data = {"text": messages, "label": ["neutro"] * len(messages)}
 
     df = pd.DataFrame(data)
@@ -87,6 +109,7 @@ def display_editable_table(messages, option_autolabel):
             )
 
             if option_autolabel:
+                # take the index
                 model_gen_index = replacement_mapping[comp_label_list[i]]
                 df.at[i, "label"] = cols[1].selectbox(
                     "Sentimento", label_list, key=f"label_{i+1}", index=model_gen_index
@@ -115,12 +138,12 @@ def display_editable_table(messages, option_autolabel):
 if "loaded_messages" not in st.session_state:
     st.session_state["loaded_messages"] = []
 
-st.sidebar.header("Settings")
+st.sidebar.header("Settaggi")
 directory = st.sidebar.text_input(
     "Enter the directory path:", "path_to_your_text_files"
 )
 
-# On enable definition of initial label using Ai Model trained...
+# True enable definition of initial label using Ai Model trained...
 option_autolabel = st.sidebar.radio("Autolabel", (True, False))
 
 # Button to load messages from the directory
@@ -128,11 +151,13 @@ if st.sidebar.button("Carica messaggi"):
     if os.path.isdir(directory):
         st.session_state["loaded_messages"] = read_text_files(directory)
     else:
-        st.error("Invalid directory path.")
+        st.error("Percorso invalido.")
 
 
 # Check if messages are loaded
 if st.session_state["loaded_messages"]:
     display_editable_table(st.session_state["loaded_messages"], option_autolabel)
 else:
-    st.write("Enter a directory path in the sidebar and click 'Load Messages'.")
+    st.write(
+        "Immetti il percorso ad una directory che contiene i file da trattare e premi 'Carica messaggi'."
+    )
