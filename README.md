@@ -19,6 +19,20 @@ Le label sono definite in base alla seguente convenzione
 ```
 {"negativo": 0, "neutro": 1, "positivo": 2}
 ```
+## Applicazione di Data Labelling
+Nel repository si trova una prima versione di un'applicazione che può essere utilizzata per il labelling dei testi.
+
+Il codice è basato su Streamlit.
+
+L'applicazione ha una funzionalità di **automatic labelling**: è possibile predefinre le label utilizzando un 
+modello pre-trained, disponibile su HF Hub.
+
+Ovviamente, le label devono essere verificate ed, eventualmente, corrette.
+
+Per eseguire l'applicazione
+```
+streamlit run label_text.py
+```
 ## Model training
 Nel [Notebook](./fine_tune_sentiment.ipynb) trovi codice che può essere utilizzato per classificare testo in 
 (negativo, neutro, positivo).
