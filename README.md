@@ -25,3 +25,7 @@ Nel [Notebook](./fine_tune_sentiment.ipynb) trovi codice che può essere utilizz
 
 Il codice è basato sulla libreria **transformers** di HuggingFace.
 
+## Max input size
+Il modello pretrained utilizzato (da Neuraly) è basato su un modello bert-base.
+
+La dimensione massima per l'input dovrebbe essere **512** token.
