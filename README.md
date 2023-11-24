@@ -14,6 +14,10 @@ git clone https://github.com/luigisaetta/italian_sentiment_analysis.git
 ```
 pip install -f requirements.txt
 ```
-
+## Labels
+Le label sono definite in base alla seguente convenzione
+```
+{"negativo": 0, "neutro": 1, "positivi": 2}
+```
 
 
