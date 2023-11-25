@@ -34,11 +34,14 @@ Per eseguire l'applicazione
 streamlit run label_text.py
 ```
 ## Model training
-Nel [Notebook](./fine_tune_sentiment.ipynb) trovi codice che può essere utilizzato per classificare testo in 
+Nel [Notebook](./fine_tune_sentiment.ipynb) trovi codice che può essere utilizzato per addestrare un modello per classificare 
+testo in 
 (negativo, neutro, positivo).
 
-Il codice è basato sulla libreria **transformers** di HuggingFace.
-
+Il codice è basato sulla libreria **Transformers** di HuggingFace.
+## Valutazione di Modelli
+Nel [Notebook](./compute_accuracy.ipynb) trovi il codice che può essere utilizzato per valutare l'accuratezza di un modello su un 
+dato dataset, fornito in formato csv.
 ## Dataset utilizzati
 https://huggingface.co/datasets/cardiffnlp/tweet_sentiment_multilingual
 
