@@ -1,7 +1,8 @@
 # Sentiment Analysis di testi in lingua Italiana
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
-This repository contains all the work done in preparation for the project to build datasets and tools to help build better sentiment analysis and text classification models, based on Open Source, on the Italian language
+This repository contains all the work done in preparation for the project to build datasets and tools to help build better sentiment 
+analysis and text classification models, based on Open Source, on the **Italian** language
 
 ## Conda environment
 ```
