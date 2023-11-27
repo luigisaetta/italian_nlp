@@ -36,6 +36,16 @@ Per eseguire l'applicazione
 ```
 streamlit run label_text.py
 ```
+## EDA
+Un passaggio fondamentale, quando si inizia a lavorare su nuovi dati, è la Exploratory Data Analysis (EDA).
+
+L'EDA ci consente di capire come è fatto il dataset ed eventulamente identificare, precocemente, se vi sono dei problemi 
+nei dati, da fissare.
+Nel [NB][./eda_dataset.ipynb) mostro alcune tecniche, applicate al dataset di email (second_dataset).
+* statistiche relative alla lunghezza media dei testi
+* Word Cloud
+* Determinazione delle parole più frequenti nei testi
+* eliminazione delle stop words in Italiano
 ## Model training
 Nel [Notebook](./fine_tune_sentiment.ipynb) trovi codice che può essere utilizzato per addestrare un modello per classificare 
 testo in 
