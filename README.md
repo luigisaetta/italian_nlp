@@ -26,6 +26,10 @@ Le label per un modello di **Sentiment Analysis** sono definite in base alla seg
 ```
 {"negativo": 0, "neutro": 1, "positivo": 2}
 ```
+Le label per un modello di Hate Speech detection:
+```
+{"non-hateful": 0, "hateful": 1}
+```
 ## Applicazione di Data Labelling
 Nel repository si trova una prima versione di un'applicazione che può essere utilizzata per il labelling dei testi.
 
