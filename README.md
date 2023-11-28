@@ -18,7 +18,7 @@ git clone https://github.com/luigisaetta/italian_sentiment_analysis.git
 pip install -f requirements.txt
 ```
 ## Labels
-Le label sono definite in base alla seguente convenzione
+Le label per un modello di **Sentiment Analysis** sono definite in base alla seguente convenzione
 ```
 {"negativo": 0, "neutro": 1, "positivo": 2}
 ```
@@ -42,21 +42,21 @@ Un passaggio fondamentale, quando si inizia a lavorare su nuovi dati, è la Expl
 L'EDA ci consente di capire come è fatto il dataset ed eventulamente identificare, precocemente, se vi sono dei problemi 
 nei dati, da fissare.
 Nel [Notebook](./eda_dataset.ipynb) mostro alcune tecniche, applicate al dataset di email (second_dataset).
-* statistiche relative alla lunghezza media dei testi
+* Statistiche relative alla lunghezza media dei testi
 * Word Cloud
 * Determinazione delle parole più frequenti nei testi
-* eliminazione delle stop words in Italiano
+* Eliminazione delle stop words in Italiano
 ## Model training
 Nel [Notebook](./fine_tune_sentiment.ipynb) trovi codice che può essere utilizzato per addestrare un modello per classificare 
-testo in 
-(negativo, neutro, positivo).
+testo in :negativo, neutro, positivo.
 
 Il codice è basato sulla libreria **Transformers** di HuggingFace.
 ## Valutazione di Modelli
-Nel [Notebook](./compute_accuracy.ipynb) trovi il codice che può essere utilizzato per valutare l'accuratezza di un modello su un 
-dato dataset, fornito in formato csv.
+Nel [Notebook](./compute_accuracy.ipynb) trovi il codice che può essere utilizzato per valutare 
+l'accuratezza di un modello di Sentiment Analysis su un dato dataset, fornito in formato csv.
 ## Dataset utilizzati
 https://huggingface.co/datasets/cardiffnlp/tweet_sentiment_multilingual
+https://huggingface.co/datasets/Paul/hatecheck-italian
 
 ## Max input size
 Il modello pretrained inizialmente utilizzato, di 
