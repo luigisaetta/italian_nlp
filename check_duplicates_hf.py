@@ -98,28 +98,53 @@ def create_vector_store(store_type, document_splits, embedder):
     return vectorstore
 
 
+# peculiarities regarding single dataset
+# encapsulated in the function
+def read_texts_ds1(dataset_name):
+    # load Brand24/mms dataset
+    ds1 = load_dataset(dataset_name)["train"]
+    ds1.set_format(type="pandas")
+
+    df1 = ds1[:]
+
+    # filtra solo il linguaggio italiano
+    df1 = df1[df1["language"] == "it"]
+
+    print()
+    print(f"ds1 contains {len(df1)} sentences!!!")
+    print()
+
+    sentences = list(df1["text"].values)
+    return sentences
+
+
+def read_texts_ds2(dataset_name):
+    SUBSET_NAME = "italian"
+
+    # load cardiff ita dataset
+    ds2 = load_dataset(dataset_name, SUBSET_NAME)["train"]
+    ds2.set_format(type="pandas")
+
+    df2 = ds2[:]
+
+    print()
+    print(f"ds2 contains {len(df2)} sentences!!!")
+    print()
+
+    sentences = list(df2["text"].values)
+
+    return sentences
+
+
 #
 # Main
 #
 
-#load dataset1 and 2
+# load dataset1 and 2
 DATASET_NAME = "Brand24/mms"
 
-# load Brand24/mms dataset
-ds1 = load_dataset(DATASET_NAME)["train"]
+sentences1 = read_texts_ds1(DATASET_NAME)
 
-ds1.set_format(type="pandas")
-
-df1 = ds1[:]
-
-# filtra solo il linguaggio italiano
-df1 = df1[df1["language"] == 'it']
-
-print()
-print(f"ds1 contains {len(df1)} sentences!!!")
-print()
-
-sentences1 = list(df1["text"].values)
 # create a list of Documents Object.. it is the format
 # to load the vector db
 documents1 = [Document(page_content=text) for text in sentences1]
@@ -131,16 +156,8 @@ vector_store = create_vector_store(VECTOR_STORE_NAME, documents1, embedder)
 
 # loading dataset ds2
 DATASET_NAME = "cardiffnlp/tweet_sentiment_multilingual"
-SUBSET_NAME = "italian"
 
-# load cardiff ita dataset
-ds2 = load_dataset(DATASET_NAME, SUBSET_NAME)["train"]
-
-ds2.set_format(type="pandas")
-
-df2 = ds2[:]
-
-sentences2 = list(df2["text"].values)
+sentences2 = read_texts_ds2(DATASET_NAME)
 
 #
 # Here we search for duplicates
@@ -159,9 +176,13 @@ for candidate_doc in tqdm(sentences2):
 # display results
 
 # this one should be calibrated
-THR = 0.01
+THR = 0.005
 
 tot_duplicated = 0
+
+ref_list = []
+closest_list = []
+distance_list = []
 
 for i, (doc, return_doc1) in enumerate(all_docs_list):
     closest, distance1 = return_doc1
@@ -169,17 +190,25 @@ for i, (doc, return_doc1) in enumerate(all_docs_list):
 
     print()
     print(f"Record n. {i}")
+    ref_list.append(doc)
+    closest_list.append(closest.page_content)
+    distance_list.append(distance1)
+
     if distance1 < THR:
         tot_duplicated += 1
         print(f"Candidate: {doc[:SIZE]}...")
         print(f"Closest  : {closest.page_content[:SIZE]}..., distance: {distance1:.2f}")
-        
         print(f"Duplicated found, distance: {distance1:.2f}")
 
 print()
 
+dict_results = {"ref": ref_list, "closest": closest_list, "dist": distance_list}
+
+df_duplicates = pd.DataFrame(dict_results)
+
+df_duplicates.to_csv("duplicates.csv", index=None)
 
 print("Report:")
 print()
-print(f"Found {tot_duplicated} duplicated.")
+print(f"Found {tot_duplicated} strong duplicated.")
 print()
