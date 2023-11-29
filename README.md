@@ -64,6 +64,7 @@ Nel [Notebook](./compute_accuracy.ipynb) trovi il codice che può essere utilizz
 l'accuratezza di un modello di Sentiment Analysis su un dato dataset, fornito in formato csv.
 ## Dataset utilizzati
 https://huggingface.co/datasets/cardiffnlp/tweet_sentiment_multilingual
+https://huggingface.co/datasets/Brand24/mms
 https://huggingface.co/datasets/Paul/hatecheck-italian
 
 ## Max input size
