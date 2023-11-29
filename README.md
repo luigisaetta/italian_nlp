@@ -1,4 +1,4 @@
-# Sentiment Analysis di testi in lingua Italiana
+# IA applicata a testi in lingua Italiana
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
 Questo repository contiene tutto il lavoro svolto in preparazione del progetto per costruire dataset e strumenti utili a sviluppare migliori 
@@ -26,7 +26,7 @@ Le label per un modello di **Sentiment Analysis** sono definite in base alla seg
 ```
 {"negativo": 0, "neutro": 1, "positivo": 2}
 ```
-Le label per un modello di Hate Speech detection:
+Le label per un modello di **Hate Speech** detection:
 ```
 {"non-hateful": 0, "hateful": 1}
 ```
