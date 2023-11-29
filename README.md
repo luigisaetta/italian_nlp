@@ -63,9 +63,9 @@ Il codice è basato sulla libreria **Transformers** di HuggingFace.
 Nel [Notebook](./compute_accuracy.ipynb) trovi il codice che può essere utilizzato per valutare 
 l'accuratezza di un modello di Sentiment Analysis su un dato dataset, fornito in formato csv.
 ## Dataset utilizzati
-https://huggingface.co/datasets/cardiffnlp/tweet_sentiment_multilingual
-https://huggingface.co/datasets/Brand24/mms
-https://huggingface.co/datasets/Paul/hatecheck-italian
+* https://huggingface.co/datasets/cardiffnlp/tweet_sentiment_multilingual
+* https://huggingface.co/datasets/Brand24/mms
+* https://huggingface.co/datasets/Paul/hatecheck-italian
 
 ## Max input size
 Il modello pretrained inizialmente utilizzato, di 
