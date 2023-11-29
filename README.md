@@ -68,8 +68,8 @@ l'accuratezza di un modello di Sentiment Analysis su un dato dataset, fornito in
 * https://huggingface.co/datasets/Paul/hatecheck-italian
 
 ## Max input size
-Il modello pretrained inizialmente utilizzato, di 
-[Neuraly](https://huggingface.co/neuraly/bert-base-italian-cased-sentiment) è basato su un modello 
-**bert-base-cased**.
+Il modello pretrained inizialmente utilizzato per la Sentiment Analysis, di 
+[Neuraly](https://huggingface.co/neuraly/bert-base-italian-cased-sentiment), è basato 
+su un modello **bert-base-cased**.
 
 La dimensione massima per l'input dovrebbe essere **512** token.
